@@ -6,7 +6,7 @@ Retrieval-Augmented Generation (RAG) is an approach that combines the strengths 
 
 RAG attempts to solve this limitation by integrating a retrieval component. Instead of relying only on the model’s internal "memorized" knowledge, the system retrieves relevant external documents at query time, and then passes those documents as context to the language model. This ensures that the generated answer can be grounded in up-to-date, domain-specific, or private data that the base model did not originally train on.
 
-- **Key benefits of RAG**:
+**Key benefits of RAG**:
 - Up-to-date information: RAG allows tapping into dynamically updated sources, ensuring the answer is not limited to the model’s stale training data.
 - Domain adaptation: By retrieving from domain-specific sources (like fintech reports or policy documents), the generated answers become more accurate for niche use cases.
 - Reduced hallucination: Since the model is guided by retrieved evidence, it’s less likely to invent non-factual responses.
@@ -16,7 +16,7 @@ In a fintech scenario, you may have proprietary financial reports, regulatory do
 - Feeds these retrieved documents into the LLM to inform and ground its final answer.
 This approach ensures the answer remains anchored in current, factual, and domain-specific content.
 
-- **Document embedding**:
+**Document embedding**:
 Document embedding is the process of converting text documents into vector representations. Instead of treating documents as raw text, we represent them as numerical vectors in a high-dimensional space. These vectors capture semantic meanings: documents with similar content result in vectors that are close to each other in vector space.
 
 - **How Embeddings Work**:
@@ -24,15 +24,15 @@ Document embedding is the process of converting text documents into vector repre
 - An embedding model (often a neural network) processes the text and outputs a dense numerical vector (e.g., a 768-dimensional vector).
 - Similar texts produce similar vectors, making it easier to find semantically related content.
 
-- **FAISS (Facebook AI Similarity Search)**:
+**FAISS (Facebook AI Similarity Search)**:
 FAISS is a library developed by Facebook AI Research that efficiently stores and searches large collections of vectors. Once you embed your documents into vectors, you can store them in FAISS. When a user query is embedded, FAISS quickly returns the closest vectors (and thus the most similar documents). This process is known as vector similarity search.
 
-- **Vector Similarity Search**:
+**Vector Similarity Search**:
 - Given a query like "What are emerging trends in fintech?" we embed the query into a vector.
 - FAISS searches through the stored document vectors to find the closest matches.
 - The closest vectors correspond to the most relevant documents, which are then provided as context to the LLM.
 
-- **Hugging Face Transformers**:
+**Hugging Face Transformers**:
 Hugging Face Transformers is a popular library for working with state-of-the-art models for NLP tasks. Transformers (like BERT, GPT, T5) have revolutionized NLP by leveraging attention mechanisms to understand relationships between words in context.
 
 In this pipeline:
@@ -43,7 +43,7 @@ Transformer-based models use the Transformer architecture, which relies heavily 
 - Takes as input the retrieved documents plus the user query.
 - Uses a transformer-based model to generate a coherent, context-driven answer.
 
-- **Uniqueness and Advantages of RAG**:
+**Uniqueness and Advantages of RAG**:
 - Customization: You can tailor the RAG model to your domain without retraining the entire LLM. Just change the documents in your vector store.
 - Scalability: As your document base grows, you don’t have to retrain the whole model, just keep indexing your documents.
 - Transparency: Because the answer is based on retrieved documents, you can trace back the source documents, improving trust and explainability.
@@ -139,7 +139,7 @@ We included a tests directory and a test_rag_pipeline.py file. To run tests:
 python -m pytest
 ```
 
-- **What the tests do**:
+**What the tests do**:
 - Index Building Test: Ensures that the index creation process works and saves the index file.
 - Query Test: Verifies that querying returns a non-empty response.
 If tests pass, it confirms the pipeline’s basic functionality.
