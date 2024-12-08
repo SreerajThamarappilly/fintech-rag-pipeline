@@ -1,0 +1,8 @@
+transformers==4.47.0
+sentence-transformers==3.3.1
+tf-keras==2.18.0
+faiss-cpu==1.9.0.post1
+torch==2.3.1
+numpy==1.26.4
+pytest==8.3.4
+python-dotenv==1.0.0
